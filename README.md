@@ -2,13 +2,7 @@
 
 ![CI](https://github.com/timwmcqueen/AssetLedger/actions/workflows/ci.yml/badge.svg)
 
-AssetLedger is an API I built for tracking company computers and other IT equipment from the time they are added until they are retired.
-
-This project replaces an early Java OOP coursework repository with a substantially more realistic application while preserving the original coursework under `legacy/`.
-
-## Why this project
-
-IT teams need more than a spreadsheet to know who has a device, whether it is available, in repair, or retired, and how its state changed over time. AssetLedger models that lifecycle as an API with durable records and an audit trail.
+AssetLedger is an API for tracking company computers and other IT equipment from the time they are added until they are retired.
 
 ## Stack
 
@@ -24,15 +18,15 @@ IT teams need more than a spreadsheet to know who has a device, whether it is av
 
 ## Features
 
-- Create and retrieve managed assets
-- Unique asset-tag and serial-number enforcement
-- Search by tag, serial, manufacturer, model, or assignee
-- Filter inventory by lifecycle state
-- Assign assets to users and locations
-- Mark devices for repair
-- Retire assets and prevent invalid reassignment
-- Durable audit history for lifecycle events
-- Structured problem responses for conflicts/not-found cases
+- Add and retrieve assets
+- Enforce unique asset tags and serial numbers
+- Search by tag, serial number, manufacturer, model, or assignee
+- Filter by status
+- Assign equipment to users and locations
+- Mark equipment for repair
+- Retire equipment
+- Prevent retired equipment from being reassigned
+- Keep an event history for each asset
 - Health endpoint for deployment checks
 
 ## API examples
@@ -64,13 +58,13 @@ Content-Type: application/json
 }
 ```
 
-View the audit trail:
+View an asset's history:
 
 ```http
 GET /api/assets/1/events
 ```
 
-Interactive OpenAPI documentation is available at `/docs` when the service is running.
+FastAPI's OpenAPI documentation is available at `/docs` while the service is running.
 
 ## Run locally
 
@@ -95,14 +89,8 @@ docker run -p 8000:8000 assetledger
 
 ## Architecture
 
-See [docs/architecture.md](docs/architecture.md) for the request flow and layer boundaries.
+See [docs/architecture.md](docs/architecture.md).
 
-## Engineering decisions
+The route layer handles HTTP requests, the service layer handles asset status rules, SQLAlchemy handles persistence, and Pydantic validates incoming data.
 
-The HTTP layer delegates lifecycle rules to a service module instead of embedding them in route handlers. SQLAlchemy models own persistence, Pydantic models validate the external contract, and asset events provide an append-only audit history.
-
-The test suite exercises the API across complete lifecycle transitions rather than only checking isolated helper functions.
-
-## Portfolio history
-
-The repository's original Java inheritance exercise is retained under `legacy/` to document progression from coursework into application engineering.
+Asset events are stored separately from the current asset record so the API can return both the current state and the history of changes.
