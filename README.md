@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/timwmcqueen/AssetLedger/actions/workflows/ci.yml/badge.svg)
 
-A production-style **IT asset lifecycle API** built with Python, FastAPI, SQLAlchemy, and automated tests.
+AssetLedger is an API I built for tracking company computers and other IT equipment from the time they are added until they are retired.
 
 This project replaces an early Java OOP coursework repository with a substantially more realistic application while preserving the original coursework under `legacy/`.
 
