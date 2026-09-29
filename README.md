@@ -1,6 +1,6 @@
 # AssetLedger
 
-![CI](https://github.com/ToTheLoveOfMyLife/InheritanceOOP/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/timwmcqueen/AssetLedger/actions/workflows/ci.yml/badge.svg)
 
 A production-style **IT asset lifecycle API** built with Python, FastAPI, SQLAlchemy, and automated tests.
 
