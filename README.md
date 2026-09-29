@@ -1,5 +1,7 @@
 # AssetLedger
 
+![CI](https://github.com/ToTheLoveOfMyLife/InheritanceOOP/actions/workflows/ci.yml/badge.svg)
+
 A production-style **IT asset lifecycle API** built with Python, FastAPI, SQLAlchemy, and automated tests.
 
 This project replaces an early Java OOP coursework repository with a substantially more realistic application while preserving the original coursework under `legacy/`.
@@ -90,6 +92,10 @@ pytest -q
 docker build -t assetledger .
 docker run -p 8000:8000 assetledger
 ```
+
+## Architecture
+
+See [docs/architecture.md](docs/architecture.md) for the request flow and layer boundaries.
 
 ## Engineering decisions
 
