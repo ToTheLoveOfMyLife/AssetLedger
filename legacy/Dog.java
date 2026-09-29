@@ -1,4 +1,3 @@
-
 public class Dog extends RescueAnimal {
 
     // Instance variable
@@ -18,17 +17,8 @@ public class Dog extends RescueAnimal {
         setTrainingStatus(trainingStatus);
         setReserved(reserved);
         setInServiceCountry(inServiceCountry);
-
     }
 
-    // Accessor Method
-    public String getBreed() {
-        return breed;
-    }
-
-    // Mutator Method
-    public void setBreed(String dogBreed) {
-        breed = dogBreed;
-    }
-
+    public String getBreed() { return breed; }
+    public void setBreed(String dogBreed) { breed = dogBreed; }
 }
